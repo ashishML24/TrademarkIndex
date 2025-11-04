@@ -1,0 +1,41 @@
+{
+  "image_filename": "2004-09-03_45.jpg",
+  "metadata": {
+    "timestamp": "2025-11-04T12:49:50.473007",
+    "perf": {
+      "duration_s": 33.56513595581055,
+      "mem_before_bytes": 838262784,
+      "mem_after_bytes": 1807671296
+    },
+    "ocr_result": {
+      "english": {
+        "text": "StatusCheck",
+        "conf_mean": 0.8674392652779354,
+        "conf_max": 0.8674392652779354,
+        "tokens": [
+          {
+            "text": "StatusCheck",
+            "conf": 0.8674392652779354
+          }
+        ]
+      },
+      "chinese": {
+        "text": "",
+        "conf_mean": 0.0,
+        "conf_max": 0.0,
+        "tokens": []
+      },
+      "raw": [
+        {
+          "text": "StatusCheck",
+          "conf": 0.8674392652779354
+        }
+      ]
+    },
+    "blip_caption": "a logo showing the word status check and no chinese characters and no particular device or shape.",
+    "chosen_sources": {
+      "english": "ocr",
+      "chinese": "blip"
+    }
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "image_filename": "2004-09-27_19.jpg",
+  "metadata": {
+    "timestamp": "2025-11-04T13:53:23.893633",
+    "perf": {
+      "duration_s": 36.651350259780884,
+      "mem_before_bytes": 809394176,
+      "mem_after_bytes": 1804492800
+    },
+    "ocr_result": {
+      "english": {
+        "text": "I} CIOTCE CTTNLSD CUISIID",
+        "conf_mean": 0.1280483377711337,
+        "conf_max": 0.1280483377711337,
+        "tokens": [
+          {
+            "text": "I} CIOTCE CTTNLSD CUISIID",
+            "conf": 0.1280483377711337
+          }
+        ]
+      },
+      "chinese": {
+        "text": "顺  意  莱  馆",
+        "conf_mean": 0.17156855584295722,
+        "conf_max": 0.17156855584295722,
+        "tokens": [
+          {
+            "text": "顺  意  莱  馆",
+            "conf": 0.17156855584295722
+          }
+        ]
+      },
+      "raw": [
+        {
+          "text": "顺  意  莱  馆",
+          "conf": 0.17156855584295722
+        },
+        {
+          "text": "M} CHOICE CHTNLSP CUISIND",
+          "conf": 0.07810815252473513
+        }
+      ]
+    },
+    "blip_caption": "a logo showing the word m my choice chinese cuisine and chinese characters and a circle shaped device.",
+    "chosen_sources": {
+      "english": "blip",
+      "chinese": "ocr"
+    }
+  }
+}
