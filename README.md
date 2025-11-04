@@ -15,16 +15,6 @@ The API performs:
 Output is returned as JSON and also saved locally in `/outputs/`.
 
 ---
-## Folder structure
-
-Trademark_Indexing_Assignment/
-├── app.py
-├── requirements.txt
-├── Dockerfile
-├── /model/          # optional placeholder for BLIP fine-tuned model
-├── /outputs/        # auto-generated
-├── Trademark_Indexing_API_Documentation.docx
-└── README.md
 
 
 ## Architecture
@@ -85,13 +75,22 @@ To use the model:
 ## How to Run
 
 ### Build Docker Image
-```bash
-docker build -t trademark-api .
+```
+docker build --no-cache -t trademark-indexing:cpu .
 ```
 
 ### Run Container
-```bash
-docker run -p 8080:8080 trademark-api
+```
+docker run --rm -p 8080:8080 \
+  -v /Users/ashu/Desktop/Interview_Prep/GovTech/TrademarkLogoIndexing/model/blip_trademark_ft_2K_Samples:/app/model \
+  -v /Users/ashu/Desktop/Interview_Prep/GovTech/TrademarkLogoIndexing/outputs:/app/outputs \
+  -v /Users/ashu/Desktop/Interview_Prep/GovTech/TrademarkLogoIndexing/app.py:/app/app.py \
+  -e MODEL_PATH=/app/model \
+  -e OCR_LANGS="en,ch_sim" \
+  -e OCR_CONF_THRESHOLD=0.40 \
+  -e OUTPUT_DIR=/app/outputs \
+  trademark-indexing:cpu
+
 ```
 
 ### Send Inference Request
@@ -103,12 +102,19 @@ curl -X POST http://localhost:8080/invoke \
 
 ---
 
-## Example Output
-```json
+## Example
+
+--> Input image
+
+![Alt text](/Users/ashu/Desktop/Interview_Prep/GovTech/TrademarkIndex/outputs/2004-09-27_19.jpg)
+
+--> Output
+
+```
 {
-  "wordsInMark": "silverstone",
-  "chineseCharacter": "",
-  "descrOfDevice": "a logo showing the word silverstone and a circle shaped device."
+  "wordsInMark": "m my choice chinese cuisine",
+  "chineseCharacter": "顺  意  莱  馆",
+  "descrOfDevice": "a logo showing the word m my choice chinese cuisine and chinese characters and a circle shaped device."
 }
 ```
 
