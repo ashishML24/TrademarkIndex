@@ -5,7 +5,7 @@ It combines **Optical Character Recognition (OCR)** and **Vision-Language Modeli
 
 ---
 
-## 🧠 Overview
+## Overview
 
 The API performs:
 - **English Text Extraction (wordsInMark)** using EasyOCR and BLIP fallback.
@@ -15,38 +15,86 @@ The API performs:
 Output is returned as JSON and also saved locally in `/outputs/`.
 
 ---
+## Folder structure
 
-## ⚙️ Architecture
+Trademark_Indexing_Assignment/
+├── app.py
+├── requirements.txt
+├── Dockerfile
+├── /model/          # optional placeholder for BLIP fine-tuned model
+├── /outputs/        # auto-generated
+├── Trademark_Indexing_API_Documentation.docx
+└── README.md
+
+
+## Architecture
 
 ```
-Base64 Image Input 
-    ↓
-Decode & Resize
-    ↓
-EasyOCR (English + Chinese)
-    ↓
-Confidence-based Fusion
-    ↓
-BLIP Caption Generation
-    ↓
-Structured JSON Output
+                  +-----------------------+
+                  |   Base64 Image Input  |
+                  +-----------+-----------+
+                              |
+                              v
+                      [Decode + Resize]
+                              |
+                              v
+                   +----------+-----------+
+                   |      EasyOCR         |
+                   | (en, ch_sim, ch_tra) |
+                   +----------+-----------+
+                              |
+          +-------------------+-------------------+
+          |                                       |
+          v                                       v
+ [OCR English tokens]                   [OCR Chinese tokens]
+          |                                       |
+          |                                       v
+          |                               Chinese Characters
+          |                                (always OCR-based)
+          |
+          v
+ +------------------------------------+
+ | Confidence-based English selection |
+ |  - OCR conf_max >= threshold → use  |
+ |  - else extract via BLIP caption    |
+ +------------------------------------+
+          |
+          v
+ +-------------------------------+
+ |        BLIP Model (VLM)       |
+ |  a logo showing the word ...  |
+ +-------------------------------+
+          |
+          v
+ +------------------------------------+
+ |   Structured JSON Output Writer     |
+ |   - main_output.json                |
+ |   - meta_data.json                  |
+ +------------------------------------+
+
 ```
 
 ---
+## BLIP Caption Generation
+descrOfDevice is generated as Caption using a BLIP finetuned on Trademark dataset (10K, 50K, 300K).
+To use the model:
+1. Download the model from https://drive.google.com/drive/folders/1MvKQjdUnogc0BTCN3RLNAMNM8Si-THHI?usp=sharing
+2. Copy the model in /model/
+3. Provide the model path to the inference API request call (see below)
 
-## 🚀 How to Run
+## How to Run
 
-### 1️⃣ Build Docker Image
+### Build Docker Image
 ```bash
 docker build -t trademark-api .
 ```
 
-### 2️⃣ Run Container
+### Run Container
 ```bash
 docker run -p 8080:8080 trademark-api
 ```
 
-### 3️⃣ Send Inference Request
+### Send Inference Request
 ```bash
 curl -X POST http://localhost:8080/invoke \
   -H "Content-Type: application/json" \
@@ -55,7 +103,7 @@ curl -X POST http://localhost:8080/invoke \
 
 ---
 
-## 🧾 Example Output
+## Example Output
 ```json
 {
   "wordsInMark": "silverstone",
@@ -73,14 +121,6 @@ Each run creates two JSON files in `/app/outputs/`:
 
 ---
 
-## ⚡ Performance
-| Environment | Inference Time (per image) |
-|--------------|----------------------------|
-| CPU (Intel i5) | 30–50 sec |
-| GPU (RTX 3060 / A100) | 2–3 sec |
-
----
-
 ## 🧰 Tech Stack
 - **FastAPI** – REST API framework  
 - **PyTorch** – model inference (BLIP)  
@@ -92,7 +132,7 @@ Each run creates two JSON files in `/app/outputs/`:
 
 ## 🧑‍💼 Author
 **Ashish Saxena**  
-Candidate for Senior/Lead Data Scientist – Computer Vision & Generative AI  
+Candidate for Senior/Lead Data Scientist – Computer Vision  
 
 ---
 
