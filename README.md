@@ -121,14 +121,14 @@ curl -X POST http://localhost:8080/invoke \
 
 ---
 
-## 📦 Outputs Saved
+## Outputs Saved
 Each run creates two JSON files in `/app/outputs/`:
 - `<filename>_main_output.json` → model’s textual and visual summary  
 - `<filename>_meta_data.json` → performance metrics, OCR & BLIP raw results  
 
 ---
 
-## 🧰 Tech Stack
+## Tech Stack
 - **FastAPI** – REST API framework  
 - **PyTorch** – model inference (BLIP)  
 - **EasyOCR** – multilingual OCR  
@@ -137,12 +137,12 @@ Each run creates two JSON files in `/app/outputs/`:
 
 ---
 
-## 🧑‍💼 Author
+## Author
 **Ashish Saxena**  
 Candidate for Senior/Lead Data Scientist – Computer Vision  
 
 ---
 
-## 📄 Documentation
+## Documentation
 See full technical report:  
 **`Trademark_Indexing_API_Documentation.docx`** (included in repo)
