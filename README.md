@@ -145,4 +145,4 @@ Candidate for Senior/Lead Data Scientist – Computer Vision
 
 ## Documentation
 See full technical report:  
-**`Trademark_Indexing_API_Documentation.docx`** (included in repo)
+**`Trademark_Indexing_API_Documentation.pdf`** (included in repo)
