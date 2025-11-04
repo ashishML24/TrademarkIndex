@@ -107,7 +107,7 @@ curl -X POST http://localhost:8080/invoke \
 
 --> Input image
 
-![Alt text](/Users/ashu/Desktop/Interview_Prep/GovTech/TrademarkIndex/outputs/2004-09-27_19.jpg)
+![Alt text](/outputs/2004-09-27_19.jpg)
 
 --> Output
 
