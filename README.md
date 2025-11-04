@@ -94,10 +94,11 @@ docker run --rm -p 8080:8080 \
 ```
 
 ### Send Inference Request
-```bash
+```
+IMAGE_PATH="/Users/ashu/Desktop/Interview_Prep/GovTech/trademark_hybrid/data/10k/Images/2004-09-27_19.jpg"
 curl -X POST http://localhost:8080/invoke \
   -H "Content-Type: application/json" \
-  -d "{\"image\":\"$(base64 /path/to/image.jpg | tr -d '\n')\"}"
+  -d "{\"image\":\"$(base64 "$IMAGE_PATH" | tr -d '\n')\", \"image_filename\":\"$(basename "$IMAGE_PATH")\"}"
 ```
 
 ---
