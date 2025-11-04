@@ -70,7 +70,7 @@ descrOfDevice is generated as Caption using a BLIP finetuned on Trademark datase
 To use the model:
 1. Download the model from https://drive.google.com/drive/folders/1MvKQjdUnogc0BTCN3RLNAMNM8Si-THHI?usp=sharing
 2. Copy the model in /model/
-3. Provide the model path to the inference API request call (see below)
+3. Provide the model path when running the container (see below)
 
 ## How to Run
 
