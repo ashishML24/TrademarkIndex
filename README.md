@@ -139,8 +139,6 @@ Each run creates two JSON files in `/app/outputs/`:
 
 ## Author
 **Ashish Saxena**  
-Candidate for Senior/Lead Data Scientist – Computer Vision  
-
 ---
 
 ## Documentation
