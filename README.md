@@ -66,7 +66,7 @@ Output is returned as JSON and also saved locally in `/outputs/`.
 
 ---
 ## BLIP Caption Generation
-descrOfDevice is generated as Caption using a BLIP finetuned on Trademark dataset (10K, 50K, 300K).
+descrOfDevice is generated as Caption using a BLIP finetuned on Trademark dataset.
 To use the model:
 1. Download the model from https://drive.google.com/drive/folders/1MvKQjdUnogc0BTCN3RLNAMNM8Si-THHI?usp=sharing
 2. Copy the model in /model/
